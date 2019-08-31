@@ -1,0 +1,32 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/leyou
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+  jackson:
+    default-property-inclusion: non_null
+eureka:
+  client:
+    service-url:
+      defaultZone: http://222.24.14.51:10086/eureka
+mybatis:
+  type-aliases-package: com.leyou.order.pojo
+ly:
+  jwt:
+    pubKeyPath: F:\视频\rsa\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  worker:
+    workerId: 1
+    dataCenterId: 1
+  pay:
+    appId: wx8397f8696b538317
+    mchId: 1473426802
+    key: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+    httpconnectTimeoutMs: 1000
+    httpreadTimeoutMs: 8000
+    notifyUrl: http://************/ #natapp.cn 内网穿透 客户端的ip

@@ -1,0 +1,55 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: ly-gateway
+  datasource:
+    url: jdbc:mysql://localhost:3306/leyou
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  client:
+    service-url:
+      defaultZone: http://222.24.14.51:10086/eureka
+zuul:   #路由的规则
+  prefix: /api
+  routes:
+    item-service: /item/**
+    search-service: /search/**
+    user-sercice: /user/**
+    auth-service: /auth/**
+    cart-service: /cart/**
+    order-service: /order/**
+    upload-service:
+      path: /upload/**
+      serviceId: upload-service
+      strip-prefix: false
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Credentials,Access-Control-Allow-Origin,Vary,X-Frame-Options,token
+  add-host-header: true #跟cookie有关,添加host头信息
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000   #熔断时长
+ribbon:
+  ConnectionTimeout: 1000  #ribbon链接超时时长
+  ReadTimeout: 3500          #ribbon读取超时时长
+  MaxAutoRetries: 0         #当前服务重试次数
+  MaxAutoRetriesNextServer: 0       #切换服务重试次数
+ly:
+  jwt:
+    pubKeyPath: F:\视频\rsa\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  filter:
+    allowPaths:
+    - /api/auth
+    - /api/search
+    - /api/user/register
+    - /api/user/check
+    - /api/user/code
+    - /api/item
+
