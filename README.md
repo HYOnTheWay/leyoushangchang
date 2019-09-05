@@ -126,7 +126,7 @@
 
 - 基础的SpringMVC 5.0.8、Spring 5.0.8和MyBatis3
 - Spring Boot 2.0.4版本
-- Spring Cloud 最新版 Finchley.RC1
+- Spring Cloud 版本 Finchley.RC1
 - Redis-4.0
 - RabbitMQ-3.4
 - Elasticsearch-6.2.4
